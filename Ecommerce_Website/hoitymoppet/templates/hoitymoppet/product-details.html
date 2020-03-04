@@ -1,0 +1,396 @@
+{% extends 'hoitymoppet/master.html' %}
+{% block title %} {{product_details.product_name}} : Hoitymoppet India {% endblock %}
+{% load static %}
+{% block body %}
+
+<main class="main">
+	<div class="page-header text-center" style="background-image: url({% static 'images/backgrounds/bg-1.jpg' %}); padding: 4.6rem 0 5rem;">
+	</div>
+	<nav aria-label="breadcrumb" class="breadcrumb-nav">
+		<div class="container-fluid">
+			<ol class="breadcrumb">
+				<li class="breadcrumb-item"><a href="index.html">Home</a></li>
+				<li class="breadcrumb-item active" aria-current="page">About Us</li>
+			</ol>
+		</div>
+	</nav>
+	<div class="page-content">
+		<div class="container">
+			<div class="product-details-top">
+				<div class="row">
+					<div class="col-md-7">
+						<div class="product-gallery product-gallery-vertical">
+							<div class="row">
+								<figure class="product-main-image">
+									<img id="product-zoom" src='/media/{{product_details.productimage}}' data-zoom-image='/media/{{product_details.productimage}}' alt="{{product_details.product_name}}" title="{{product_details.product_name}}" />
+									<a href="#" id="#product-{{photo.id}}" class="btn-product-gallery">
+										<i class="icon-arrows"></i>
+									</a>
+								</figure>
+								<div id="product-zoom-gallery" class="product-image-gallery">
+									<a class="product-gallery-item active" href="#" data-image="/media/{{product_details.productimage}}" data-zoom-image="/media/{{product_details.productimage}}">
+										<img src='/media/{{product_details.productimage}}' alt="{{product_details.product_name}}" title="{{product_details.product_name}}" />
+									</a>
+									{%for photo in photos%}
+									<a class="product-gallery-item" href="#product-{{photo.id}}" data-image="/media/{{product_details.productimage}}" data-zoom-image="/media/{{product_details.productimage}}">
+										<img src={{photo.image.url}} alt="{{product_details.product_name}}" title="{{product_details.product_name}}" />
+									</a>
+									{%endfor%}
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-5">
+						<div class="product-details">
+							<h1 class="product-title">{{product_details.product_name}}</h1>
+
+							<div class="product-price">
+								<i class="fa fa-inr" aria-hidden="true"></i> {{product_details.price}}
+							</div>
+							<div class="product-content">
+								<p>{{product_details.item_detail}}</p>
+							</div>
+							<div class="details-filter-row details-row-size">
+								<label for="size">Size:</label>
+								<div class="select-custom">
+									<select name="size" id="size" class="form-control sizeselected">
+										<option value="#" selected="selected">Select a size</option>
+										{% for age in product_details.age.all %}
+											<option value="{{ age }}">{{ age }}</option>
+										{% endfor %}
+									</select>
+								</div>
+							</div>
+							<div class="details-filter-row details-row-size">
+								<label for="size">Guide :</label>
+								<a href="#signin-modal" data-toggle="modal" class="size-guide"><i class="icon-th-list"></i>Size Guide and &nbsp;<span style="color:#ff0000;">Custom Size</span></a>
+							</div>
+							<div class="product-details-action">
+								<a href="{% url 'update-cart' product_details.id%}" class="btn-product btn-cart"><span style="color:#ffffff;">add to cart</span></a>
+								<div class="details-action-wrapper">
+									<a href="{% url 'add-wishlist' product_details.id %}" class="btn-product btn-wishlist" title="Wishlist"><span>Add to Wishlist</span></a>
+								</div>
+							</div>
+							<div class="product-details-footer">
+								<div class="product-cat">
+									<span>Category:</span>
+									<a href="#">Women</a>,
+									<a href="#">Dresses</a>,
+									<a href="#">Yellow</a>
+								</div>
+
+								<div class="social-icons social-icons-sm">
+									<span class="social-label">Share:</span>
+									<a href="#" class="social-icon" title="Facebook" target="_blank"><i class="icon-facebook-f"></i></a>
+									<a href="#" class="social-icon" title="Twitter" target="_blank"><i class="icon-twitter"></i></a>
+									<a href="#" class="social-icon" title="Instagram" target="_blank"><i class="icon-instagram"></i></a>
+									<a href="#" class="social-icon" title="Pinterest" target="_blank"><i class="icon-pinterest"></i></a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="product-details-tab">
+				<ul class="nav nav-pills" role="tablist">
+					<li class="nav-item">
+						<a class="nav-link active" id="product-desc-link" data-toggle="tab" href="#product-desc-tab" role="tab" aria-controls="product-desc-tab" aria-selected="true">Detail & Styling</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" id="product-info-link" data-toggle="tab" href="#product-info-tab" role="tab" aria-controls="product-info-tab" aria-selected="false">Size & Care Instructions</a>
+					</li>
+
+				</ul>
+				<div class="tab-content">
+					<div class="tab-pane fade show active" id="product-desc-tab" role="tabpanel" aria-labelledby="product-desc-link">
+						<div class="product-desc-content row">
+							<div class="col-md-6">
+								<h3>Item Details</h3>
+								<p>{{product_details.item_detail}}</p>
+							</div>
+							<div class="col-md-6">
+								<h3>Styling</h3>
+								<p>{{product_details.style}}</p>
+							</div>
+						</div>
+					</div>
+					<div class="tab-pane fade" id="product-info-tab" role="tabpanel" aria-labelledby="product-info-link">
+						<div class="product-desc-content row">
+							<div class="col-md-6">
+								<h3>Care Instructions</h3>
+								<p>{{ product_details.care_instructions }}</p>
+							</div>
+							<div class="col-md-6">
+								&nbsp;
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</main>
+<style>
+	.table td {
+    	ppadding-top: 2rem;
+		padding-bottom: 2rem;
+		text-align: center;
+		font-size: 11px;
+		color: #000000;
+	}
+</style>
+<div class="modal fade" id="signin-modal" tabindex="-1" role="dialog" aria-hidden="true">
+	<div class="modal-dialog modal-dialog-centered" role="document" style="max-width: 75%;">
+		<div class="modal-content">
+			<div class="modal-body">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true"><i class="icon-close"></i></span>
+				</button>
+				<div class="form-box" style="max-width: 100%; height: 750px; overflow:auto; padding: 3rem 3rem 3rem;">
+					<div class="form-tab">
+
+						<div class="row">
+							<div class="col-md-9">
+								<ul class="nav nav-pills nav-fill" role="tablist">
+									<li class="nav-item">
+										<a class="nav-link active" id="sizeguide-tab" data-toggle="tab" href="#sizeguide" role="tab" aria-controls="signin" aria-selected="true">Size Guide</a>
+									</li>
+									<li class="nav-item">
+										<a class="nav-link" id="measureguide-tab" data-toggle="tab" href="#measureguide" role="tab" aria-controls="register" aria-selected="false">Measure Guide</a>
+									</li>
+									<li class="nav-item">
+										<a class="nav-link" id="howtomesureguide-tab" data-toggle="tab" href="#howtomesureguide" role="tab" aria-controls="register" aria-selected="false">How To Mesure</a>
+									</li>
+								</ul>
+
+								<div class="tab-content" id="tab-content-5">
+									<div class="tab-pane fade show active" id="sizeguide" role="tabpanel" aria-labelledby="sizeguide-tab">
+										<p style="font-size:16px;">PLEASE NOTE THAT THIS TABLE IS TO BE USED AS A GUIDE ONLY. TUTU DU MONDE FOCUSES ON CREATING GARMENTS THAT ARE TRUE TO SIZE, HOWEVER, IF IN BETWEEN THE SIZES, PLEASE GO A SIZE UP.</p>
+										<br>
+										<table class="table table-bordered">
+											<tbody>
+												<tr>
+													<td>AGE - CATEGORY</td>
+													<td>APPROXIMATE AGE</td>
+													<td>HEIGHT (CM)</td>
+													<td>CHEST (CM)</td>
+													<td>WAIST (CM)</td>
+													<td>HIP (CM)</td>
+													<td>LEG</td>
+													<td>AUS SIZE</td>
+													<td>US SIZE</td>
+													<td>UK SIZE</td>
+													<td>EURO SIZE</td>
+												</tr>
+												<tr>
+													<td>BABY</td>
+													<td>0 - 3 MONTHS</td>
+													<td>56 - 62 MONTHS</td>
+													<td>43</td>
+													<td>44</td>
+													<td>44</td>
+													<td>43</td>
+													<td>0000 - 000</td>
+													<td>0 - 3 MONTHS</td>
+													<td>0 - 3 MONTHS</td>
+													<td>56 - 62 MONTHS</td>
+												</tr>
+												<tr>
+													<td>BABY</td>
+													<td>0 - 3 MONTHS</td>
+													<td>56 - 62 MONTHS</td>
+													<td>43</td>
+													<td>44</td>
+													<td>44</td>
+													<td>43</td>
+													<td>0000 - 000</td>
+													<td>0 - 3 MONTHS</td>
+													<td>0 - 3 MONTHS</td>
+													<td>56 - 62 MONTHS</td>
+												</tr>
+												<tr>
+													<td>BABY</td>
+													<td>0 - 3 MONTHS</td>
+													<td>56 - 62 MONTHS</td>
+													<td>43</td>
+													<td>44</td>
+													<td>44</td>
+													<td>43</td>
+													<td>0000 - 000</td>
+													<td>0 - 3 MONTHS</td>
+													<td>0 - 3 MONTHS</td>
+													<td>56 - 62 MONTHS</td>
+												</tr>
+												<tr>
+													<td>BABY</td>
+													<td>0 - 3 MONTHS</td>
+													<td>56 - 62 MONTHS</td>
+													<td>43</td>
+													<td>44</td>
+													<td>44</td>
+													<td>43</td>
+													<td>0000 - 000</td>
+													<td>0 - 3 MONTHS</td>
+													<td>0 - 3 MONTHS</td>
+													<td>56 - 62 MONTHS</td>
+												</tr>
+												<tr>
+													<td>BABY</td>
+													<td>0 - 3 MONTHS</td>
+													<td>56 - 62 MONTHS</td>
+													<td>43</td>
+													<td>44</td>
+													<td>44</td>
+													<td>43</td>
+													<td>0000 - 000</td>
+													<td>0 - 3 MONTHS</td>
+													<td>0 - 3 MONTHS</td>
+													<td>56 - 62 MONTHS</td>
+												</tr>
+												<tr>
+													<td>BABY</td>
+													<td>0 - 3 MONTHS</td>
+													<td>56 - 62 MONTHS</td>
+													<td>43</td>
+													<td>44</td>
+													<td>44</td>
+													<td>43</td>
+													<td>0000 - 000</td>
+													<td>0 - 3 MONTHS</td>
+													<td>0 - 3 MONTHS</td>
+													<td>56 - 62 MONTHS</td>
+												</tr>
+												<tr>
+													<td>BABY</td>
+													<td>0 - 3 MONTHS</td>
+													<td>56 - 62 MONTHS</td>
+													<td>43</td>
+													<td>44</td>
+													<td>44</td>
+													<td>43</td>
+													<td>0000 - 000</td>
+													<td>0 - 3 MONTHS</td>
+													<td>0 - 3 MONTHS</td>
+													<td>56 - 62 MONTHS</td>
+												</tr>
+											</tbody>
+										</table>
+									</div>
+									<div class="tab-pane fade" id="measureguide" role="tabpanel" aria-labelledby="measureguide-tab">
+										<img src='{% static "images/mesure-guide.png" %}' alt="Mesure Guide" width="100%" height="auto" />
+									</div>
+									<div class="tab-pane fade" id="howtomesureguide" role="tabpanel" aria-labelledby="howtomesureguide-tab">
+										<iframe width="100%" height="615px" src="https://www.youtube.com/embed/N6rGsleO0H4" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+									</div>
+								</div>
+							</div>
+							<div class="col-md-3" style="background:#f6f6f6">
+								<br>
+								<h4 style="text-align: center;">Custom Guide</h4>
+								<form method="POST" class="row">
+									<div class="form-group col-md-6">
+										<input type="email" class="form-control" name="soulder_to_apex" id="soulder_to_apex" placeholder="Soulder to Apex">
+									</div>
+									<div class="form-group col-md-6">
+										<input type="email" class="form-control" name="cap_sleeve_length" id="cap_sleeve_length" placeholder="Cap Sleeve Length">
+									</div>
+									<div class="form-group col-md-6">
+										<input type="email" class="form-control" name="short_sleeve_length" id="short_sleeve_length" placeholder="Short Sleeve Length">
+									</div>
+									<div class="form-group col-md-6">
+										<input type="email" class="form-control" name="three_fourth_to_apex" id="three_fourth_to_apex" placeholder="Three Fourth to Apex">
+									</div>
+									<div class="form-group col-md-6">
+										<input type="email" class="form-control" name="full_sleeve_length" id="full_sleeve_length" placeholder="Full Sleeve Length">
+									</div>
+									<div class="form-group col-md-6">
+										<input type="email" class="form-control" name="knee_round" id="knee_round" placeholder="Knee Round">
+									</div>
+									<div class="form-group col-md-6">
+										<input type="email" class="form-control" name="calf" id="calf" placeholder="Calf">
+									</div>
+									<div class="form-group col-md-6">
+										<input type="email" class="form-control" name="ankle_round" id="ankle_round" placeholder="Ankle Round">
+									</div>
+									<div class="form-group col-md-6">
+										<input type="email" class="form-control" name="waist_length" id="waist_length" placeholder="Waist Length">
+									</div>
+									<div class="form-group col-md-6">
+										<input type="email" class="form-control" name="neck_round" id="neck_round" placeholder="Neck Round">
+									</div>
+									<div class="form-group col-md-6">
+										<input type="email" class="form-control" name="front_neck_depth" id="front_neck_depth" placeholder="Front Neck Depth">
+									</div>
+									<div class="form-group col-md-6">
+										<input type="email" class="form-control" name="cross_front" id="cross_front" placeholder="Cross Front">
+									</div>
+									<div class="form-group col-md-6">
+										<input type="email" class="form-control" name="bust" id="bust" placeholder="Bust">
+									</div>
+									<div class="form-group col-md-6">
+										<input type="email" class="form-control" name="under_bust" id="under_bust" placeholder="under bust">
+									</div>
+									<div class="form-group col-md-6">
+										<input type="email" class="form-control" name="waist" id="waist" placeholder="Waist">
+									</div>
+									<div class="form-group col-md-6">
+										<input type="email" class="form-control" name="lower_waist" id="lower_waist" placeholder="Lower Waist">
+									</div>
+									<div class="form-group col-md-6">
+										<input type="email" class="form-control" name="wrist" id="wrist" placeholder="Wrist">
+									</div>
+									<div class="form-group col-md-6">
+										<input type="email" class="form-control" name="thigh_round" id="thigh_round" placeholder="Thigh Round">
+									</div>
+									<div class="form-group col-md-6">
+										<input type="email" class="form-control" name="lower_thigh" id="lower_thigh" placeholder="Lower Thigh">
+									</div>
+									<div class="form-group col-md-6">
+										<input type="email" class="form-control" name="arm_hole" id="arm_hole" placeholder="Arm Hole">
+									</div>
+									<div class="form-group col-md-6">
+										<input type="email" class="form-control" name="knee_length" id="knee_length" placeholder="Knee Length">
+									</div>
+									<div class="form-group col-md-6">
+										<input type="email" class="form-control" name="full_length" id="full_length" placeholder="Full Length">
+									</div>
+									<div class="form-group col-md-6">
+										<input type="email" class="form-control" name="shoulder" id="shoulder" placeholder="Shoulder">
+									</div>
+									<div class="form-group col-md-6">
+										<input type="email" class="form-control" name="back_neck_depth" id="back_neck_depth" placeholder="Back Neck Depth">
+									</div>
+									<div class="form-group col-md-6">
+										<input type="email" class="form-control" name="biceps" id="biceps" placeholder="Biceps">
+									</div>
+									<div class="form-group col-md-6">
+										<input type="email" class="form-control" name="elbow_round" id="elbow_round" placeholder="Elbow Round">
+									</div>
+									<div class="form-group col-md-6">
+										<input type="email" class="form-control" name="hips" id="hips" placeholder="Hips">
+									</div>
+									<div class="form-group col-md-6">
+										<input type="email" class="form-control" name="bottom_length" id="bottom_length" placeholder="Bottom Length">
+									</div>
+									<div class="form-footer col-md-6">
+										<button type="submit" class="btn btn-outline-primary-2">
+											<span>Submit</span>
+											<i class="icon-long-arrow-right"></i>
+										</button>
+									</div>
+									<div class="form-footer col-md-6">
+										<button type="submit" class="btn btn-outline-primary-2">
+											<span>Discard</span>
+											<i class="icon-long-arrow-right"></i>
+										</button>
+									</div>
+								</form>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock %}

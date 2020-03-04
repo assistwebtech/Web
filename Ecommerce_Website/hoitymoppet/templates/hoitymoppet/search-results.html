@@ -1,0 +1,64 @@
+{% extends 'hoitymoppet/master.html' %}
+{% block title %} Shop : Hoitymoppet India {% endblock %}
+{% load static %}
+{% block body %}
+<main class="main">
+	<div class="page-header text-center" style="background-image: url({% static 'images/backgrounds/bg-1.jpg' %}); padding: 4.6rem 0 5rem;">
+	</div>
+	<nav aria-label="breadcrumb" class="breadcrumb-nav">
+		<div class="container-fluid">
+			<ol class="breadcrumb">
+				<li class="breadcrumb-item"><a href="index.html">Home</a></li>
+				<li class="breadcrumb-item active" aria-current="page">Search Results <span style="color:#e23e1d;">({{ products|length }})</span></li>
+			</ol>
+		</div>
+	</nav>
+	<div class="page-content">
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-lg-12">
+					<div class="products mb-3">
+						{% if products %}
+						<div class="row">
+							{% for product in products %}
+							<div class="col-6 col-md-4 col-lg-4 col-xl-2">
+								<div class="product product-7 text-center">
+									<figure class="product-media">
+										<span class="product-label label-new">{{product.style.style_name}}</span>
+										<a href="{% url 'productdetails' product.id %}">
+											<img src='/media/{{product.productimage}}' alt="{{product.product_name}}" title="{{product.product_name}}" class="product-image">
+										</a>
+										<div class="product-action-vertical">
+											<a href="#" class="btn-product-icon btn-wishlist btn-expandable"><span>add to wishlist</span></a>
+										</div>
+										<div class="product-action">
+											<a href="#" class="btn-product btn-cart"><span>add to cart</span></a>
+										</div>
+									</figure>
+									<div class="product-body">
+										<div class="product-cat">
+											<a href="#">{{product.style.style_name}}</a>
+										</div>
+										<h3 class="product-title"><a href="product.html">{{product.product_name}}</a></h3>
+										<div class="product-price">
+											<i class="fa fa-inr"></i> {{product.price}}
+										</div>
+									</div>
+								</div>
+							</div>
+							{% endfor %}
+						</div>
+						{% else %}
+						<div class="row">
+							<div class="col-xl-12 col-md-12 col-sm-12" style="padding: 50px; text-align: center;">
+								<p>No products matched your search criteria.</p>
+							</div>
+						</div>
+						{% endif %}
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</main>
+{% endblock %}

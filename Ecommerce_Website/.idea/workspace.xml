@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="c104d9b0-25e8-4b0c-ac04-6e204fe0dc4d" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+        <option value="HTML File" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectId" id="1XQCOW3Eclp8RPILTCgN0Hy1O9V" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/hoitymoppet/static" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/hoitymoppet/static" />
+      <recent name="$PROJECT_DIR$/accounts/templates/accounts" />
+      <recent name="$PROJECT_DIR$/hoitymoppet/static/images" />
+      <recent name="$PROJECT_DIR$/accounts" />
+      <recent name="$PROJECT_DIR$/hoitymoppet/master/ecom" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/hoitymoppet/static/images" />
+      <recent name="$PROJECT_DIR$/hoitymoppet/static/js" />
+      <recent name="$PROJECT_DIR$/accounts/templates/accounts/registration" />
+      <recent name="$PROJECT_DIR$/accounts/templates/accounts" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="Ecommerce_Website" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
+      <module name="Ecommerce_Website" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="$USER_HOME$/PycharmProjects/practice/venv/bin/python" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/.." />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="c104d9b0-25e8-4b0c-ac04-6e204fe0dc4d" name="Default Changelist" comment="" />
+      <created>1580968899546</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1580968899546</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="456" y="197" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1582199761316">
+      <screen x="63" y="24" width="1857" height="1056" />
+    </state>
+    <state x="456" y="197" key="#com.intellij.execution.impl.EditConfigurationsDialog/63.24.1857.1056@63.24.1857.1056" timestamp="1582199761316" />
+    <state x="692" y="344" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1582110895143">
+      <screen x="63" y="24" width="1857" height="1056" />
+    </state>
+    <state x="692" y="344" key="#com.intellij.fileTypes.FileTypeChooser/63.24.1857.1056@63.24.1857.1056" timestamp="1582110895143" />
+    <state x="734" y="264" key="EnvironmentVariablesDialog" timestamp="1582199749549">
+      <screen x="63" y="24" width="1857" height="1056" />
+    </state>
+    <state x="734" y="264" key="EnvironmentVariablesDialog/63.24.1857.1056@63.24.1857.1056" timestamp="1582199749549" />
+    <state x="779" y="297" key="FileChooserDialogImpl" timestamp="1582199758594">
+      <screen x="63" y="24" width="1857" height="1056" />
+    </state>
+    <state x="779" y="297" key="FileChooserDialogImpl/63.24.1857.1056@63.24.1857.1056" timestamp="1582199758594" />
+    <state x="485" y="174" key="SettingsEditor" timestamp="1581657930229">
+      <screen x="63" y="24" width="1857" height="1056" />
+    </state>
+    <state x="485" y="174" key="SettingsEditor/63.24.1857.1056@63.24.1857.1056" timestamp="1581657930229" />
+    <state x="652" y="367" key="com.intellij.ide.util.TipDialog" timestamp="1583297289526">
+      <screen x="63" y="24" width="1857" height="1056" />
+    </state>
+    <state x="652" y="367" key="com.intellij.ide.util.TipDialog/63.24.1857.1056@63.24.1857.1056" timestamp="1583297289526" />
+    <state x="638" y="270" width="714" height="576" key="find.popup" timestamp="1582288138518">
+      <screen x="63" y="24" width="1857" height="1056" />
+    </state>
+    <state x="638" y="270" width="714" height="576" key="find.popup/63.24.1857.1056@63.24.1857.1056" timestamp="1582288138518" />
+    <state x="654" y="236" width="672" height="160" key="search.everywhere.popup" timestamp="1582116608319">
+      <screen x="63" y="24" width="1857" height="1056" />
+    </state>
+    <state x="654" y="236" width="672" height="160" key="search.everywhere.popup/63.24.1857.1056@63.24.1857.1056" timestamp="1582116608319" />
+  </component>
+</project>

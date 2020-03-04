@@ -1,0 +1,59 @@
+{% extends 'hoitymoppet/master.html' %}
+{% load static %}
+{% block body %}
+<main class="main">
+	<div class="page-header text-center" style="background-image: url({% static 'images/backgrounds/bg-1.jpg' %}); padding: 4.6rem 0 5rem;">
+	</div>
+	<nav aria-label="breadcrumb" class="breadcrumb-nav">
+		<div class="container-fluid">
+			<ol class="breadcrumb">
+				<li class="breadcrumb-item"><a href="index.html">Home</a></li>
+				<li class="breadcrumb-item active" aria-current="page">Hoitymoppet Lookbook</li>
+			</ol>
+		</div>
+	</nav>
+    <div class="page-content">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4">
+                    <article class="entry single-entry">
+                        <figure class="entry-media">
+                            <img src='/media/{{lookbookdetails.lookbook_image}}' alt="" title="" />
+                        </figure>
+                    </article>
+                </div>
+                <div class="col-lg-8">
+                    <article class="entry single-entry">
+                        <div class="entry-body">
+                            <div class="entry-meta">
+                                <span class="entry-author">
+                                    by <a href="#">Hoitymoppet</a>
+                                </span>
+                                <span class="meta-separator">|</span>
+                                <a href="#">Nov 22, 2018</a>
+                            </div>
+                            <h2 class="entry-title">
+                                {{ lookbookdetails.lookbook_name }}
+                            </h2>
+                            <div class="entry-content editor-content">
+                                <blockquote>“ {{ lookbookdetails.lookbook_summary }}” _ Hoitymoppet ... </blockquote>
+                                <p>{{ lookbookdetails.lookbook_details|safe }}</p>
+                            </div>
+                            <div class="cta-wrapper" style="max-width:100%; padding-top: 0.6rem;">
+                                <h4 class="cta-title" style="font-size:20px;">Share</h4>
+                                <div class="social-icons social-icons-colored">
+                                    <a href="#" class="social-icon social-facebook" title="Facebook" target="_blank"><i class="icon-facebook-f"></i></a>
+                                    <a href="#" class="social-icon social-twitter" title="Twitter" target="_blank"><i class="icon-twitter"></i></a>
+                                    <a href="#" class="social-icon social-instagram" title="Instagram" target="_blank"><i class="icon-instagram"></i></a>
+                                    <a href="#" class="social-icon social-youtube" title="Youtube" target="_blank"><i class="icon-youtube"></i></a>
+                                    <a href="#" class="social-icon social-pinterest" title="Pinterest" target="_blank"><i class="icon-pinterest"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+{% endblock %}

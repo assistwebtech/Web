@@ -1,0 +1,220 @@
+{% extends '../hoitymoppet/master.html' %}
+{% block title %} Manage Address : Hoitymoppet India {% endblock %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block body %}
+<div class="shop-area">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-3 col-lg-3">
+                {% include './accounts-navigation.html' %}
+            </div>
+            <div class="col-xl-9 col-lg-9">
+                <div class="breadcrumb-area">
+                    <div class="breadcrumbs">
+                        <ul>
+                            <li><a href="{% url 'index' %}">Home <i class="fa fa-angle-right"></i></a></li>
+                            <li><a href="{% url 'profile' %}">My Account <i class="fa fa-angle-right"></i></a></li>
+                            <li>manage Address</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="row align-items-center">
+                    <div class="col-lg-12">
+                        <div class="section-title">
+                            <h3>Manage Address</h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-content">
+                    <div id="list-products" class="tab-pane active">
+                        <div class="product-single wide-style accounts">
+                            <div class="row align-items-center">
+                                <div class="col-lg-12">
+
+                                    <div class="checkout-area">
+                                        <div class="billing-form accounts">
+                                            <h4>Add New Address <a href="#" class="anchor add_new_address_btn"><i class="fa fa-plus"></i> Add More</a></h4>
+                                        </div>
+                                        <div class="billing-form accounts add_new_address_box">
+                                            <form method="POST" action="{% url 'manageaddress' %}">
+                                                {% csrf_token %}
+                                                <div class="row">
+                                                    <div class="col-lg-2">
+                                                        <label>Name</label>
+                                                    </div>
+                                                    <div class="col-lg-4">
+                                                        <input type="text" class="user_fullname" placeholder="Enter Full Name" name="name" required />
+                                                    </div>
+                                                    <div class="col-lg-2">
+                                                        <label>Mobile</label>
+                                                    </div>
+                                                    <div class="col-lg-4">
+                                                        <input type="text" class="user_mobile" placeholder="Enter Mobile" name="mobile_no" required />
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-lg-2">
+                                                        <label>Pincode</label>
+                                                    </div>
+                                                    <div class="col-lg-4">
+                                                        <input type="text" class="user_pincode" name="pincode" placeholder="Enter Pincode" />
+                                                    </div>
+                                                    <div class="col-lg-2">
+                                                        <label>Locality</label>
+                                                    </div>
+                                                    <div class="col-lg-4">
+                                                        <input type="text" class="user_locality" name="locality" placeholder="Enter Locality" />
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-lg-2">
+                                                        <label>Address</label>
+                                                    </div>
+                                                    <div class="col-lg-10">
+                                                        <textarea class="user_address" name="address" placeholder="Enter Address"></textarea>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-lg-2">
+                                                        <label>City</label>
+                                                    </div>
+                                                    <div class="col-lg-4">
+                                                        <input type="text" class="user_city" name="city" placeholder="Enter City" />
+                                                    </div>
+                                                    <div class="col-lg-2">
+                                                        <label>State</label>
+                                                    </div>
+                                                    <div class="col-lg-4">
+                                                        <input type="text" class="user_state" name="state" placeholder="Enter State" />
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-lg-2">
+                                                        <label>Landmark</label>
+                                                    </div>
+                                                    <div class="col-lg-4">
+                                                        <input type="text" class="user_landmark" name="landmark" placeholder="Enter Landmark" />
+                                                    </div>
+                                                    <div class="col-lg-2">
+                                                        <label>Alternate Mobile</label>
+                                                    </div>
+                                                    <div class="col-lg-4">
+                                                        <input type="text" class="user_alter_mobile" name="alternate_no" placeholder="Enter Alternate Mobile" />
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-lg-12">
+                                                        <button class="btn-commonaccounts">Submit</button>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                    <br>
+
+                                    <div class="checkout-area">
+                                        {% for address in addresses %}
+                                        <div class="billing-form accounts existing-address">
+                                            <h4>Address <a href="{% url 'delete-address' address.id %}" class="anchor">Delete</a> <a id="{{address.id}}" href="javascript:void(0);" class="anchor edit_address_btn">Edit</a></h4>
+                                            <div style="padding:20px; border:1px solid #ecedee;" id="{{ address.id }}">
+                                                <div class="row">
+                                                    <div class="col-lg-12">
+                                                        <span style="font-weight:bold;">{{ address.name }}</span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span style="font-weight:bold;">{{ address.mobile_no }}</span><br>
+                                                        <span>{{ address.address }}, {{ address.state }}, {{ address.city }} - {{ address.pincode }}</span><br>
+                                                        <span>{{ address.locality }}, {{ address.alternate_no }}</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="billing-form accounts edit_address_box" id="form{{address.id}}" style="display:none;">
+                                            <form method="POST" action="{% url 'manageaddress' %}">
+                                                {% csrf_token %}
+                                                <div class="row">
+                                                    <div class="col-lg-2">
+                                                        <label>Name</label>
+                                                    </div>
+                                                    <div class="col-lg-4">
+                                                        <input type="number" class="user_fullname d-none" placeholder="Enter Full Name" name="id" value="{{ address.id }}" />
+                                                        <input type="text" class="user_fullname" placeholder="Enter Full Name" name="name" value="{{ address.name }}" />
+                                                    </div>
+                                                    <div class="col-lg-2">
+                                                        <label>Mobile</label>
+                                                    </div>
+                                                    <div class="col-lg-4">
+                                                        <input type="text" class="user_mobile" placeholder="Enter Mobile" name="mobile_no" value="{{ address.mobile_no }}" />
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-lg-2">
+                                                        <label>Pincode</label>
+                                                    </div>
+                                                    <div class="col-lg-4">
+                                                        <input type="text" class="user_pincode" name="pincode" placeholder="Enter Pincode" value="{{ address.pincode }}" />
+                                                    </div>
+                                                    <div class="col-lg-2">
+                                                        <label>Locality</label>
+                                                    </div>
+                                                    <div class="col-lg-4">
+                                                        <input type="text" class="user_locality" name="locality" placeholder="Enter Locality" value="{{ address.locality }}" />
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-lg-2">
+                                                        <label>Address</label>
+                                                    </div>
+                                                    <div class="col-lg-10">
+                                                        <textarea class="user_address" name="address" placeholder="Enter Address">{{ address.address }}</textarea>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-lg-2">
+                                                        <label>City</label>
+                                                    </div>
+                                                    <div class="col-lg-4">
+                                                        <input type="text" class="user_city" name="city" placeholder="Enter City" value="{{ address.city }}" />
+                                                    </div>
+                                                    <div class="col-lg-2">
+                                                        <label>State</label>
+                                                    </div>
+                                                    <div class="col-lg-4">
+                                                        <input type="text" class="user_state" name="state" placeholder="Enter State" value="{{ address.state }}" />
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-lg-2">
+                                                        <label>Landmark</label>
+                                                    </div>
+                                                    <div class="col-lg-4">
+                                                        <input type="text" class="user_landmark" name="landmark" placeholder="Enter Landmark" value="{{ address.landmark }}" />
+                                                    </div>
+                                                    <div class="col-lg-2">
+                                                        <label>Alternate Mobile</label>
+                                                    </div>
+                                                    <div class="col-lg-4">
+                                                        <input type="text" class="user_alter_mobile" name="alternate_no" placeholder="Enter Alternate Mobile" value="{{ address.alternate_no }}" />
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-lg-12">
+                                                        <button class="btn-commonaccounts">Submit</button>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>
+                                        <br>
+                                        {% endfor %}
+                                    </div>
+                                    <br>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<br><br>
+{% endblock %}

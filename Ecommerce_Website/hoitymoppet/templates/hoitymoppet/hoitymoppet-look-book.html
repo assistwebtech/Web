@@ -1,0 +1,46 @@
+{% extends 'hoitymoppet/master.html' %}
+{% block title %} Hoitymoppet Look Book {% endblock %}
+{% load static %}
+{% block body %}
+<main class="main">
+	<div class="page-header text-center" style="background-image: url({% static 'images/backgrounds/bg-1.jpg' %}); padding: 4.6rem 0 5rem;">
+	</div>
+	<nav aria-label="breadcrumb" class="breadcrumb-nav">
+		<div class="container-fluid">
+			<ol class="breadcrumb">
+				<li class="breadcrumb-item"><a href="index.html">Home</a></li>
+				<li class="breadcrumb-item active" aria-current="page">Hoitymoppet Lookbook</li>
+			</ol>
+		</div>
+	</nav>
+    <div class="page-content">
+        <div class="container">
+            <div class="entry-container" data-layout="fitRows">
+                {% for lookbook in lookbooks %}
+                <div class="entry-item lifestyle shopping col-sm-6 col-lg-4">
+                    <article class="entry entry-mask">
+                        <figure class="entry-media">
+                            <a href="{% url 'hoitymoppetlookbookdetails' lookbook.id %}">
+                                <img src='/media/{{lookbook.lookbook_image}}' alt="{{lookbook.lookbook_name}}" title="{{lookbook.lookbook_name}}">
+                            </a>
+                        </figure>
+                        <div class="entry-body">
+                            <div class="entry-meta">
+                                <a href="#">Nov 22, 2018</a>
+                            </div>
+                            <h2 class="entry-title">
+                                <a href="{% url 'hoitymoppetlookbookdetails' lookbook.id %}">{{ lookbook.lookbook_name }}</a>
+                            </h2>
+                            <div class="entry-cats">
+                                <a href="{% url 'hoitymoppetlookbookdetails' lookbook.id %}">Read More</a>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+                {% endfor %}
+            </div>
+            <div class="mb-3"></div>
+        </div>
+    </div>
+</main>
+{% endblock %}

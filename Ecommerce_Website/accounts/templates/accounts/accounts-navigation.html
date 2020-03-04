@@ -1,0 +1,11 @@
+{% load static %}
+<ul class="nav nav-dashboard flex-column mb-3 mb-md-0">
+    <li class="nav-item"><a class="nav-link" href="{% url 'profile' %}">Profile Information</a></li>
+    <li class="nav-item"><a class="nav-link" href="{% url 'manageaddress' %}">Manage Address</a></li>
+    <li class="nav-item"><a class="nav-link" href="{% url 'mywishlist' %}">My Wishlist</a></li>
+    <li class="nav-item"><a class="nav-link" href="{% url 'childinformation' %}">Child Information</a></li>
+    <li class="nav-item"><a class="nav-link" href="{% url 'pancardinformation' %}">Pan Card Information</a></li>
+    <li class="nav-item"><a class="nav-link" href="{% url 'aadharcardinformation' %}">Aadhar Card Information</a></li>
+    <li class="nav-item"><a class="nav-link" href="{% url 'change_password' %}">Change Password</a></li>
+    <li class="nav-item"><a class="nav-link" href="{% url 'logout' %}">Logout</a></li>
+</ul>

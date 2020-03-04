@@ -1,0 +1,117 @@
+{% extends '../hoitymoppet/master.html' %}
+{% block title %} Child Information : Hoitymoppet India {% endblock %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block body %}
+<div class="shop-area">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-3 col-lg-3">
+                {% include './accounts-navigation.html' %}
+            </div>
+            <div class="col-xl-9 col-lg-9">
+                <div class="breadcrumb-area">
+                    <div class="breadcrumbs">
+                        <ul>
+                            <li><a href="{% url 'index' %}">Home <i class="fa fa-angle-right"></i></a></li>
+                            <li><a href="{% url 'profile' %}">My Account <i class="fa fa-angle-right"></i></a></li>
+                            <li>Child Information</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="row align-items-center">
+                    <div class="col-lg-12">
+                        <div class="section-title">
+                            <h3>Child Information</h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-content">
+                    <div id="list-products" class="tab-pane active">
+                        <div class="product-single wide-style accounts">
+                            <div class="row align-items-center">
+                                <div class="col-lg-12">
+                                    <div class="checkout-area">
+                                        <div class="billing-form accounts">
+                                            <h4>Add Child <a href="#" class="anchor add_new_child_btn"><i class="fa fa-plus"></i> Add More</a></h4>
+                                        </div>
+                                        <div class="billing-form accounts add_new_child_box">
+                                            <form method="POST" action="{% url 'childinformation' %}">
+                                                {% csrf_token %}
+                                                <div class="row">
+                                                    <div class="col-lg-3">
+                                                        <label>Child Name *</label>
+                                                    </div>
+                                                    <div class="col-lg-9">
+                                                        <input type="text" class="child_name" placeholder="Enter Name" name="child_name" required />
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-lg-3">
+                                                        <label>Child Date of Birth *</label>
+                                                    </div>
+                                                    <div class="col-lg-9">
+                                                        <input type="text" class="child_birth_date" id="datepicker" placeholder="Enter Date" name="child_birth_date" required />
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-lg-12">
+                                                        <button class="btn-commonaccounts" id="form-submit">Submit</button>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                    <br>
+                                    <div class="checkout-area">
+                                        {% for childinformation in childinformations %}
+                                        <div class="billing-form accounts existing-address">
+                                            <h4>Child <a href="{% url 'delete-child' childinformation.id %}" class="anchor">Delete</a> <a id="{{childinformation.id}}" href="javascript:void(0);" class="anchor edit_address_btn edit_child_btn">Edit</a></h4>
+                                            <div style="padding:20px; border:1px solid #ecedee;" id="{{ childinformation.id }}">
+                                                <div class="row">
+                                                    <div class="col-lg-12">
+                                                        <span style="font-weight:bold;">Name : {{ childinformation.child_name }}</span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span style="font-weight:bold;">DOB : {{ childinformation.child_birth_date }}</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="billing-form accounts edit_address_box" id="form{{childinformation.id}}" style="display:none;">
+                                            <form method="POST" action="{% url 'childinformation' %}">
+                                                {% csrf_token %}
+                                                <div class="row">
+                                                    <div class="col-lg-3">
+                                                        <label>Child Name</label>
+                                                    </div>
+                                                    <div class="col-lg-9">
+                                                        <input type="number" class="child_name d-none" placeholder="Enter Full Name" name="id" value="{{ childinformation.id }}" />
+                                                        <input type="text" class="child_name" placeholder="Enter Child Name" name="child_name" value="{{ childinformation.child_name }}" />
+                                                    </div>
+                                                    <div class="col-lg-3">
+                                                        <label>Child Date of Birth</label>
+                                                    </div>
+                                                    <div class="col-lg-9">
+                                                        <input type="text" class="child_birth_date edit_child_dob" id="datepicker{{childinformation.id}}" placeholder="Enter Date of Birth" name="child_birth_date" value="{{ childinformation.child_birth_date }}" />
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-lg-12">
+                                                        <button class="btn-commonaccounts">Submit</button>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>
+                                        <br>
+                                        {% endfor %}
+                                    </div>
+                                    <br>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<br><br>
+{% endblock %}

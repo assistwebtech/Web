@@ -1,0 +1,43 @@
+{% extends '../hoitymoppet/master.html' %}
+{% block title %} Aadhar Card Information : Hoitymoppet India {% endblock %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block body %}
+<main class="main">
+    <div class="page-header text-center" style="background-image: url({% static 'images/backgrounds/bg-1.jpg' %})">
+        <div class="container">
+            <h1 class="page-title">Aadhar Card Information</h1>
+        </div>
+    </div>
+    <nav aria-label="breadcrumb" class="breadcrumb-nav">
+        <div class="container">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Aadhar Card Information</li>
+            </ol>
+        </div>
+    </nav>
+    <div class="page-content">
+        <div class="dashboard">
+            <div class="container">
+                <div class="row">
+                    <aside class="col-md-4 col-lg-3">
+                        {% include './accounts-navigation.html' %}
+                    </aside>
+                    <div class="col-md-8 col-lg-9">
+                        <h4>Aadhar Card Information <a href="#" id="edit_form" class="anchor edit_form">Edit</a> <a href="#" id="cancel_form" class="anchor cancel_form">Cancel</a></h4>
+                        <form method="post">
+                            {% csrf_token %}
+                            <label>Name *</label>
+                            <input type="text" class="form-control aadharcard_name" placeholder="Enter Name" name="aadharcard_name" value="{{request.user.profile.aadharcard_name}}"/>
+                            <label>Aadhar Card Number *</label>
+                            <input type="text" class="form-control aadharcard_number" placeholder="Enter Number" name="aadharcard_number" value="{{request.user.profile.aadharcard_number}}" />
+                            <button class="btn btn-outline-primary-2 btn-commonaccounts btn_form" id="form-submit">Submit</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+{% endblock %}

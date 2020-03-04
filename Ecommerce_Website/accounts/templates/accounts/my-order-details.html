@@ -1,0 +1,116 @@
+{% extends '../hoitymoppet/master.html' %}
+{% block title %} My Orders : Hoitymoppet India {% endblock %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block body %}
+<div class="shop-area">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-12 col-lg-12">
+                <div class="breadcrumb-area">
+                    <div class="breadcrumbs">
+                        <ul>
+                            <li><a href="{% url 'index' %}">Home <i class="fa fa-angle-right"></i></a></li>
+                            <li><a href="{% url 'profile' %}">My Account <i class="fa fa-angle-right"></i></a></li>
+                            <li><a href="{% url 'myorders' %}">My Orders <i class="fa fa-angle-right"></i></a></li>
+                            <li>Order Details</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="row align-items-center">
+                    <div class="col-lg-12">
+                        <div class="section-title">
+                            <h3>My Orders</h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-content">
+                    <div id="list-products" class="tab-pane active">
+                        <div class="product-single wide-style accounts">
+                            <div class="row align-items-center">
+                                <div class="col-lg-12">
+
+                                    <div class="shopping-cart-area">
+                                        <div class="table-responsive">
+                                            <table class="cart-table cart-table-details">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Delivery Address</th>
+                                                        <th>Delivered On</th>
+                                                        <th>More Actions</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td>
+                                                            <div class="cart-product-thumb" style="padding:10px;">
+                                                                <span><b>Shubham</b></span><br>
+                                                                <span>167, sector - 2a Vasundhara, Spring field school Ghaziabad - 201012, Uttar Pradesh</span><br>
+                                                                <span><b>Contact number : 9013051500</b></span><br>
+                                                                <span>This order is also tracked by 9013051500</span>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="cart-product-name">
+                                                                <h5>Delivered on Jul 03, 2019</h5>
+                                                                <a href="#" class="btn-orderno">Cash On Delivery : <i class="fa fa-inr"></i> 460.00</a>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="cart-product-name">
+                                                                <a href="#" class="btn-orderno">Download Invoice</a><br>
+                                                                <a href="#" class="btn-orderno">Need Help</a>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                    <br>
+                                    <div class="shopping-cart-area">
+                                        <div class="table-responsive">
+                                            <table class="cart-table">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Image</th>
+                                                        <th>Order Tracking Process</th>
+                                                        <th>Price</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td>
+                                                            <div class="cart-product-thumb">
+                                                                <a href="#"><img src='{% static "images/dress.jpg" %}' alt="" /></a>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="cart-product-name">
+                                                                <h5><a href="#">Kookie Kids Sleeveless Frock Happy Girl Print - Pink</a></h5>
+                                                                <span>Delivered on Jul 03, 2019</span> | <span>Your item has been delivered</span><br>
+                                                                <a href="#" class="btn-orderno">OD115890671530903000</a><br>
+                                                                <a href="#" class="btn-orderno">Track</a>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <span class="cart-product-price"><i class="fa fa-inr"></i> 460.00</span>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                    <br>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<br><br>
+{% endblock %}
