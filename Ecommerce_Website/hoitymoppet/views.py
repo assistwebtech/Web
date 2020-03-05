@@ -71,6 +71,7 @@ def add_product_to_cart(request,id):
         cart.save()
     return redirect('productdetails', product.id)
 
+@login_required
 def delete_product_from_cart(request, id):
     item=UserCart.objects.get(id=id)
     if item:
@@ -79,10 +80,50 @@ def delete_product_from_cart(request, id):
         request.session['cart_count'] = cart_items
     return redirect('addtocart')
 
+
+@login_required
+def add_user_custom_size(request,id):
+    if request.method == 'POST':
+
+        user = request.user
+        product = Product.objects.get(id=id)
+
+        shoulder_to_apex = request.POST.get('shoulder_to_apex')
+        cap_sleeve_length = request.POST.get('cap_sleeve_length')
+        short_sleeve_length = request.POST.get('short_sleeve_length')
+        three_fourth_to_apex = request.POST.get('three_fourth_to_apex')
+        full_sleeve_length = request.POST.get('full_sleeve_length')
+        knee_round = request.POST.get('knee_round')
+        calf = request.POST.get('calf')
+        ankle_round = request.POST.get('ankle_round')
+        waist_length = request.POST.get('waist_length')
+        neck_round = request.POST.get('neck_round')
+        front_neck_depth = request.POST.get('front_neck_depth')
+        cross_front = request.POST.get('cross_front')
+        bust = request.POST.get('bust')
+        under_bust = request.POST.get('under_bust')
+        waist = request.POST.get('waist')
+        lower_waist = request.POST.get('lower_waist')
+        wrist = request.POST.get('wrist')
+        thigh_round = request.POST.get('thigh_round')
+        lower_thigh = request.POST.get('lower_thigh')
+        arm_hole = request.POST.get('arm_hole')
+        knee_length = request.POST.get('knee_length')
+        full_length = request.POST.get('full_length')
+        shoulder = request.POST.get('shoulder')
+        back_neck_depth = request.POST.get('back_neck_depth')
+        biceps = request.POST.get('biceps')
+        elbow_round = request.POST.get('elbow_round')
+        hips = request.POST.get('hips')
+        bottom_length = request.POST.get('bottom_length')
+
+        return redirect('productdetails', id)
+    return  redirect('productdetails', id)
+
+
 def productdetails(request, id):
     product_details = Product.objects.get(id=id)
     prod_photos = Photo.objects.filter(product=id)
-    categories = Categories.objects.filter(parent_category=None)
     return render(request, "hoitymoppet/product-details.html", context={'product_details': product_details, 'child_categ': get_categ_and_subcateg(), 'photos':prod_photos})
 
 def company(request):

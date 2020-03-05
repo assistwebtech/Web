@@ -24,22 +24,22 @@
   <component name="PropertiesComponent">
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/hoitymoppet/static" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/hoitymoppet/static/images" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/hoitymoppet/static" />
-      <recent name="$PROJECT_DIR$/accounts/templates/accounts" />
-      <recent name="$PROJECT_DIR$/hoitymoppet/static/images" />
-      <recent name="$PROJECT_DIR$/accounts" />
-      <recent name="$PROJECT_DIR$/hoitymoppet/master/ecom" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/hoitymoppet/static/images" />
       <recent name="$PROJECT_DIR$/hoitymoppet/static/js" />
       <recent name="$PROJECT_DIR$/accounts/templates/accounts/registration" />
       <recent name="$PROJECT_DIR$/accounts/templates/accounts" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/hoitymoppet/static/images" />
+      <recent name="$PROJECT_DIR$/hoitymoppet/static" />
+      <recent name="$PROJECT_DIR$/accounts/templates/accounts" />
+      <recent name="$PROJECT_DIR$/accounts" />
+      <recent name="$PROJECT_DIR$/hoitymoppet/master/ecom" />
     </key>
   </component>
   <component name="RunManager">

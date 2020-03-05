@@ -44,14 +44,14 @@ class PhotoInline(admin.StackedInline):
     extra = 1
 
 class ProductAdmin(admin.ModelAdmin):
-    list_display = ('id', 'product_name', 'categories','ages', 'style', 'item_detail', 'style_code', 'care_instructions', 'price', 'stock', 'productimage', 'color')
+    list_display = ('id', 'product_name', 'categories','ages', 'style', 'item_detail', 'style_code', 'care_instructions', 'price', 'stock', 'productimage', 'colors')
     inlines = [PhotoInline]
 
     def ages(self, obj):
         return "\n".join([str(p.age) for p in obj.age.all()])
 
-    def color(self, obj):
-        return "\n".join([p.color for p in obj.color.all()])
+    def colors(self, obj):
+        return "\n".join([str(p.color) for p in obj.color.all()])
 
     def categories(self, obj):
         return "\n".join([p.categories for p in obj.categories.all()])
@@ -64,7 +64,10 @@ class ProductAdmin(admin.ModelAdmin):
 
 
 class UserCustomSizeAdmin(admin.ModelAdmin):
-    list_display = ('id', 'user', 'product_id', 'create_date', 'modified_date', 'soulder_to_apex', 'cap_sleeve_length', 'short_sleeve_length', 'three_fourth_to_apex', 'full_sleeve_length', 'knee_round')
+    list_display = ('id', 'user', 'product_id', 'create_date', 'modified_date', 'shoulder_to_apex', 'cap_sleeve_length', 'short_sleeve_length', 'three_fourth_to_apex', 'full_sleeve_length', 'knee_round')
+
+class UserCartAdmin(admin.ModelAdmin):
+    list_display = ('id', 'user', 'product_id', 'create_date', 'modified_date')
 
 class LookbookcategoriesAdmin(admin.ModelAdmin):
     list_display = ('id', 'category_name')
@@ -108,5 +111,5 @@ admin.site.register(Careinstructions, CareinstructionsAdmin)
 admin.site.register(Privacypolicy, PrivacypolicyAdmin)
 admin.site.register(Disclaimer, DisclaimerAdmin)
 admin.site.register(Terms, TermsAdmin)
-admin.site.register(UserCart)
+admin.site.register(UserCart, UserCartAdmin)
 admin.site.register(UserCustomSize, UserCustomSizeAdmin)

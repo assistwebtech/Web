@@ -1,9 +1,13 @@
 from django.db import models
 from ckeditor_uploader.fields import RichTextUploadingField
+from colorfield.fields import ColorField
 from django.contrib.auth.models import User
 
 class Color(models.Model):
-    color         = models.CharField(max_length=30)
+    # color         = models.CharField(max_length=30)
+    # parent_color  = models.ForeignKey('self', on_delete=models.CASCADE, null=True, blank=True, related_name='pcolor')
+
+    color = ColorField(default='#FF0000')
     parent_color  = models.ForeignKey('self', on_delete=models.CASCADE, null=True, blank=True, related_name='pcolor')
 
     def __str__(self):
@@ -168,7 +172,8 @@ class UserCustomSize(models.Model):
     product_id = models.ForeignKey(Product, on_delete=models.CASCADE)
     create_date = models.DateTimeField(auto_now_add=True)
     modified_date = models.DateTimeField(auto_now=True)
-    soulder_to_apex = models.CharField(max_length=255, null=True, blank=True)
+
+    shoulder_to_apex = models.CharField(max_length=255, null=True, blank=True)
     cap_sleeve_length = models.CharField(max_length=255, null=True, blank=True)
     short_sleeve_length = models.CharField(max_length=255, null=True, blank=True)
     three_fourth_to_apex = models.CharField(max_length=255, null=True, blank=True)

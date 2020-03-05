@@ -239,10 +239,3 @@ def aadharcardinformation(request):
 #         return redirect('manageaddress')
 #     objs = Address.objects.filter(user=request.user)
 #     return render(request, './accounts/manage-address.html', context={'addresses': objs})
-
-
-
-
-
-
-

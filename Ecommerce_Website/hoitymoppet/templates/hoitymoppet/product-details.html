@@ -50,11 +50,36 @@
 							<div class="product-content">
 								<p>{{product_details.item_detail}}</p>
 							</div>
+							<form method="POST" action="{% url 'update-cart' product_details.id%}">
 							<div class="details-filter-row details-row-size">
-								<label for="size">Size:</label>
+								<label>Color :</label>
+								<div class="product-nav product-nav-thumbs">
+									{% for color in product_details.color.all %}
+									<a href="#">
+										<div style="width:20px; height:20px; border-radius:100%; background:{{ color }}"></div>
+									</a>
+									{% endfor %}
+								</div>
+							</div>
+							<div class="details-filter-row details-row-size">
+								<label for="size">Color :</label>
 								<div class="select-custom">
-									<select name="size" id="size" class="form-control sizeselected">
-										<option value="#" selected="selected">Select a size</option>
+									<select name="size" id="size" class="form-control sizeselected" required>
+										<option value="">Please Select Color</option>
+										{% for color in product_details.color.all %}
+											<option value="{{ color }}">{{ color }}</option>
+										{% endfor %}
+									</select>
+								</div>
+							</div>
+
+
+
+							<div class="details-filter-row details-row-size">
+								<label for="size">Size :</label>
+								<div class="select-custom">
+									<select name="size" id="size" class="form-control sizeselected" required>
+										<option value="">Please Select Size</option>
 										{% for age in product_details.age.all %}
 											<option value="{{ age }}">{{ age }}</option>
 										{% endfor %}
@@ -66,11 +91,12 @@
 								<a href="#signin-modal" data-toggle="modal" class="size-guide"><i class="icon-th-list"></i>Size Guide and &nbsp;<span style="color:#ff0000;">Custom Size</span></a>
 							</div>
 							<div class="product-details-action">
-								<a href="{% url 'update-cart' product_details.id%}" class="btn-product btn-cart"><span style="color:#ffffff;">add to cart</span></a>
+								<button type="submit" class="btn-product btn-cart"><span style="color:#ffffff;">add to cart</span></button>
 								<div class="details-action-wrapper">
 									<a href="{% url 'add-wishlist' product_details.id %}" class="btn-product btn-wishlist" title="Wishlist"><span>Add to Wishlist</span></a>
 								</div>
 							</div>
+							</form>
 							<div class="product-details-footer">
 								<div class="product-cat">
 									<span>Category:</span>
@@ -288,8 +314,9 @@
 								<br>
 								<h4 style="text-align: center;">Custom Guide</h4>
 								<form method="POST" class="row">
+									{% csrf_token %}
 									<div class="form-group col-md-6">
-										<input type="email" class="form-control" name="soulder_to_apex" id="soulder_to_apex" placeholder="Soulder to Apex">
+										<input type="email" class="form-control" name="shoulder_to_apex" id="shoulder_to_apex" placeholder="Shoulder to Apex">
 									</div>
 									<div class="form-group col-md-6">
 										<input type="email" class="form-control" name="cap_sleeve_length" id="cap_sleeve_length" placeholder="Cap Sleeve Length">

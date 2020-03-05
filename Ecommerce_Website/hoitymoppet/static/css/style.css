@@ -8186,11 +8186,11 @@ p {
 .product-nav-thumbs span {
     display: flex;
     align-items: center;
-    width: 4.4rem;
-    height: 4.4rem;
+    /*width: 4.4rem;
+    height: 4.4rem;*/
     border-radius: .2rem;
     border: .2rem solid #fff;
-    margin-right: .4rem;
+    margin-right: 1rem;
     transition: box-shadow .35s ease
 }
 
@@ -19469,3 +19469,12 @@ button:focus {
 
 
 /*# sourceMappingURL=style.css.map */
+
+
+.red-border {
+    border:1px solid #ff0000;;
+}
+
+.sizeselected {
+    width:175px;
+}
